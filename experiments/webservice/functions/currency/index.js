@@ -41,17 +41,25 @@ function getRate (from, to) {
   return EUR_RATES[to] / EUR_RATES[from]
 }
 
+function symmetricFloor(amount) {
+  if (amount > 0) {
+    return Math.floor(amount)
+  } else {
+    return Math.ceil(amount)
+  }
+}
+
 function applyRate (units, nanos, rate) {
   const rawUnits = units * rate
-  const newUnits = Math.floor(rawUnits)
+  const newUnits = symmetricFloor(rawUnits)
 
   const addedNanos = (rawUnits - newUnits) * 1e9
-  const newNanos = Math.floor(nanos * rate + addedNanos)
+  let newNanos = symmetricFloor(nanos * rate + addedNanos)
 
-  const addedUnits = Math.floor(newNanos / 999999999)
+  const addedUnits = symmetricFloor(newNanos / 999999999)
 
   const finalUnits = newUnits + addedUnits
-  const finalNanos = Math.floor(newNanos % 999999999)
+  const finalNanos = symmetricFloor(newNanos % 999999999)
 
   return [finalUnits, finalNanos]
 }
