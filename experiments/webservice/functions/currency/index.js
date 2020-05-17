@@ -64,39 +64,33 @@ function applyRate (units, nanos, rate) {
   return [finalUnits, finalNanos]
 }
 
-module.exports = lib.serverless.router(router => {
-  /**
-   * Exchange the given currency by calling a POST request against the currency
-   * endpoint with a JSON payload. (Content-Type: application/json)
-   *
-   * Units are the whole units of the given currency. Nanos are 10^-9 units of
-   * the given currency, eg 0.5 USD are 500,000,000 Nanos.
-   *
-   * Ex Payload Body: {
-   *   "units": 100,
-   *   "nanos": 500000000,
-   *   "from": "PHP",
-   *   "to": "RUB"
-   * }
-   *
-   * Response: {
-   *   "units": 146,
-   *   "nanos": 78542481,
-   *   "currency": "RUB"
-   *
-   * }
-   */
-  router.post('/', (ctx, next) => {
-    const { units, nanos, from, to } = ctx.request.body
-    const rate = getRate(from, to)
-    const [convUnits, convNanos] = applyRate(units, nanos, rate)
+/**
+ * Exchange the given currency by calling a POST request against the currency
+ * endpoint with a JSON payload. (Content-Type: application/json)
+ *
+ * Units are the whole units of the given currency. Nanos are 10^-9 units of
+ * the given currency, eg 0.5 USD are 500,000,000 Nanos.
+ *
+ * Ex Payload Body: {
+ *   "units": 100,
+ *   "nanos": 500000000,
+ *   "from": "PHP",
+ *   "to": "RUB"
+ * }
+ *
+ * Response: {
+ *   "units": 146,
+ *   "nanos": 78542481,
+ *   "currency": "RUB"
+ *
+ * }
+ */
+module.exports = lib.serverless.rpcHandler(event => {
+  lib.log({ event })
+  const { units, nanos, from, to } = event
+  const rate = getRate(from, to)
+  const [convUnits, convNanos] = applyRate(units, nanos, rate)
 
-    // carry over fractions from units
-    ctx.body = { units: convUnits, nanos: convNanos, currency: to }
-  })
-
-  router.attachEventHandler(event => {
-    lib.log({ event })
-    return { ok: true, from: 'test' }
-  })
+  // carry over fractions from units
+  return { units: convUnits, nanos: convNanos, currency: to }
 })
