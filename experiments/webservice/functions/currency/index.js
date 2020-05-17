@@ -83,7 +83,7 @@ function applyRate (units, nanos, rate) {
  * Response: {
  *   "units": 146,
  *   "nanos": 78542481,
- *   "currency_code": "RUB"
+ *   "currencyCode": "RUB"
  *
  * }
  */
