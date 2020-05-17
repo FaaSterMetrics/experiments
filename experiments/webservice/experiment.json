@@ -15,12 +15,14 @@
           "memory": 256
         }
       },
+      "currency": {},
       "frontend": {}
     },
     "google": {
       "test": {},
       "test2": {},
-      "add": {}
+      "add": {},
+      "currency": {}
     }
   }
 }
