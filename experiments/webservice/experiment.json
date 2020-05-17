@@ -2,27 +2,11 @@
   "workload": {},
   "program": {
     "aws": {
-      "test": {
-        "calls": [
-          "test"
-        ]
-      },
-      "test2": {
-        "calls": [
-          "test"
-        ],
-        "overwrites": {
-          "memory": 256
-        }
-      },
-      "currency": {},
-      "frontend": {}
+      "frontend": {},
+      "currency": {}
     },
     "google": {
-      "test": {},
-      "test2": {},
-      "add": {},
-      "currency": {}
+      "add": {}
     }
   }
 }
