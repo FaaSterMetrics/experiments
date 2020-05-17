@@ -72,7 +72,7 @@ function applyRate (units, nanos, rate) {
  * the given currency, eg 0.5 USD are 500,000,000 Nanos.
  *
  * Ex Payload Body: {
- *   form: {
+ *   from: {
  *   "units": 100,
  *   "nanos": 500000000,
  *   "currencyCode": "PHP"
@@ -94,5 +94,5 @@ module.exports = lib.serverless.rpcHandler(event => {
   const [convUnits, convNanos] = applyRate(from.units, from.nanos, rate)
 
   // carry over fractions from units
-  return { units: convUnits, nanos: convNanos, currency_code: toCode }
+  return { units: convUnits, nanos: convNanos, currencyCode: toCode }
 })
