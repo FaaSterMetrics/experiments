@@ -87,10 +87,6 @@ module.exports = lib.serverless.router(router => {
     ctx.body = { units: convUnits, nanos: convNanos, currency: to }
   })
 
-  router.get('/call/:provider', async (ctx, next) => {
-    ctx.body = await lib.call(ctx.params.provider, 'test2')
-  })
-
   router.attachEventHandler(event => {
     lib.log({ event })
     return { ok: true, from: 'test' }
