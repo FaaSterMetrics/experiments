@@ -97,9 +97,17 @@ export AWS_REGION=<ie us-east-1>
 export GOOGLE_REGION=<ie us-east1>
 ```
 
-### Initlialize terraform
+### Initialize terraform
 
 ```shell
 cd infrastructure
 terraform init
+terraform workspace new webservice
+terraform workspace new iot
+```
+
+### Migrate from existing state
+```sh
+cd infrastructure
+terraform workspace new webservice -state terraform.tfstate
 ```

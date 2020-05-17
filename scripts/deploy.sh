@@ -42,4 +42,5 @@ fi
 echo "Running deploy for $1"
 
 cd infrastructure
-terraform apply -var "experiment=${1}"
+terraform workspace select $1
+terraform apply

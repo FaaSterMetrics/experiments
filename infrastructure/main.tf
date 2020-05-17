@@ -12,9 +12,6 @@ variable "project_prefix" {
   default = "faaster"
 }
 
-variable "experiment" {
-}
-
 resource "random_string" "build_id" {
   length  = 16
   special = false
@@ -34,8 +31,12 @@ resource "random_string" "project_id" {
 }
 
 locals {
-  project_name = "${var.project_prefix}-${random_string.project_id.result}"
-  expconfig    = jsondecode(file("../experiments/${var.experiment}/experiment.json"))
+  experiment = terraform.workspace
+}
+
+locals {
+  project_name = "${var.project_prefix}-${local.experiment}-${random_string.project_id.result}"
+  expconfig    = jsondecode(file("../experiments/${local.experiment}/experiment.json"))
 }
 
 locals {
@@ -44,8 +45,8 @@ locals {
 }
 
 locals {
-  aws_fn_files    = [for fn in local.aws_fn_names : "../experiments/${var.experiment}/functions/_build/${fn}.zip"]
-  google_fn_files = [for fn in local.google_fn_names : "../experiments/${var.experiment}/functions/_build/${fn}.zip"]
+  aws_fn_files    = [for fn in local.aws_fn_names : "../experiments/${local.experiment}/functions/_build/${fn}.zip"]
+  google_fn_files = [for fn in local.google_fn_names : "../experiments/${local.experiment}/functions/_build/${fn}.zip"]
 }
 
 data "google_client_config" "current" {
