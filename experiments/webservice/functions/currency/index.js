@@ -41,7 +41,7 @@ function getRate (from, to) {
   return EUR_RATES[to] / EUR_RATES[from]
 }
 
-function symmetricFloor(amount) {
+function symmetricFloor (amount) {
   if (amount > 0) {
     return Math.floor(amount)
   } else {
@@ -54,7 +54,7 @@ function applyRate (units, nanos, rate) {
   const newUnits = symmetricFloor(rawUnits)
 
   const addedNanos = (rawUnits - newUnits) * 1e9
-  let newNanos = symmetricFloor(nanos * rate + addedNanos)
+  const newNanos = symmetricFloor(nanos * rate + addedNanos)
 
   const addedUnits = symmetricFloor(newNanos / 999999999)
 
