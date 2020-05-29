@@ -1,0 +1,59 @@
+{
+  "workload": {},
+  "program": {
+    "functions": {
+      "frontend": {
+        "provider": "azure",
+        "calls": ["add"]
+      },
+      "email": {
+        "provider": "azure"
+      },
+      "currency": {
+        "provider": "azure"
+      },
+      "supportedcurrencies": {
+        "provider": "azure"
+      },
+      "add": {
+        "provider": "azure"
+      },
+      "shiporder": {
+        "provider": "azure"
+      },
+      "shipmentquote": {
+        "provider": "azure"
+      },
+      "payment": {
+        "provider": "azure"
+      },
+      "listproducts": {
+        "provider": "azure"
+      },
+      "getads": {
+        "provider": "azure"
+      },
+      "getproduct": {
+        "provider": "azure"
+      },
+      "searchproducts": {
+        "provider": "azure"
+      },
+      "listrecommendations": {
+        "provider": "azure"
+      },
+      "cartkvstorage": {
+        "provider": "azure"
+      },
+      "addcartitem": {
+        "provider": "azure"
+      },
+      "getcart": {
+        "provider": "azure"
+      },
+      "emptycart": {
+        "provider": "azure"
+      }
+    }
+  }
+}
