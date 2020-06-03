@@ -1,10 +1,21 @@
 {
-  "workload": {},
+  "workload": {
+    "config": "./workload-example.yml"
+  },
   "program": {
     "functions": {
-      "frontend": {
+      "checkout": {
         "provider": "google",
-        "calls": ["add"]
+        "calls": [
+          "getcart",
+          "getproduct",
+          "currency",
+          "shipmentquote",
+          "payment",
+          "shiporder",
+          "email",
+          "emptycart"
+        ]
       },
       "email": {
         "provider": "google"
@@ -13,9 +24,6 @@
         "provider": "google"
       },
       "supportedcurrencies": {
-        "provider": "google"
-      },
-      "add": {
         "provider": "google"
       },
       "shiporder": {

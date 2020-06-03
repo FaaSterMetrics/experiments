@@ -1,10 +1,21 @@
 {
-  "workload": {},
+  "workload": {
+    "config": "./workload-example.yml"
+  },
   "program": {
     "functions": {
-      "frontend": {
+      "checkout": {
         "provider": "aws",
-        "calls": ["add"]
+        "calls": [
+          "getcart",
+          "getproduct",
+          "currency",
+          "shipmentquote",
+          "payment",
+          "shiporder",
+          "email",
+          "emptycart"
+        ]
       },
       "email": {
         "provider": "aws"
@@ -13,9 +24,6 @@
         "provider": "aws"
       },
       "supportedcurrencies": {
-        "provider": "aws"
-      },
-      "add": {
         "provider": "aws"
       },
       "shiporder": {

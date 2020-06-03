@@ -1,10 +1,21 @@
 {
-  "workload": {},
+  "workload": {
+    "config": "./workload-example.yml"
+  },
   "program": {
     "functions": {
-      "frontend": {
+      "checkout": {
         "provider": "azure",
-        "calls": ["add"]
+        "calls": [
+          "getcart",
+          "getproduct",
+          "currency",
+          "shipmentquote",
+          "payment",
+          "shiporder",
+          "email",
+          "emptycart"
+        ]
       },
       "email": {
         "provider": "azure"
@@ -13,9 +24,6 @@
         "provider": "azure"
       },
       "supportedcurrencies": {
-        "provider": "azure"
-      },
-      "add": {
         "provider": "azure"
       },
       "shiporder": {
