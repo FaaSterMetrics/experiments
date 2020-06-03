@@ -59,4 +59,4 @@ rpcCall '{"userId": "USER12"}' "emptycart"
 rpcCall '{"userId": "USER1123122", "productIds": ["QWERTY"]}' "listrecommendations"
 
 # Add function (example frontend stuff)
-frontendCall '{"a": 10, "b": 20}' "frontend" "result"
+# frontendCall '{"a": 10, "b": 20}' "frontend" "result"
