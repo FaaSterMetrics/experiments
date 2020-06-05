@@ -135,5 +135,5 @@ module.exports = lib.serverless.rpcHandler(async (request, ctx) => {
   await ctx.call('emptycart', {
     userId: request.userId
   })
-  return orderResult
+  return { order: orderResult }
 })
