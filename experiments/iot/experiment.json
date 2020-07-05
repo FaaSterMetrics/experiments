@@ -28,6 +28,12 @@
       },
       "trafficstatistics": {
         "provider": "aws"
+      },
+      "setlightphasecalculation": {
+        "provider": "aws"
+      },
+      "getlightphasecalculation": {
+        "provider": "aws"
       }
     }
   }
