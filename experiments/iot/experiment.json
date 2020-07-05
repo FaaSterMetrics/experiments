@@ -19,6 +19,12 @@
       "emergencydetection": {
         "provider": "aws",
         "calls": ["setlightphasecalculation"]
+      },
+      "setlightphasecalculation": {
+        "provider": "aws"
+      },
+      "getlightphasecalculation": {
+        "provider": "aws"
       }
     }
   }
